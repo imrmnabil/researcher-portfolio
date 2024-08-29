@@ -57,11 +57,11 @@ export default function Home() {
       <div className="fixed w-fit h-fit">
         <Navbar setPageNum={handlePageNum}/>
       </div>
-      <div ref={pageRef}  className="fixed lg:w-[calc(100%-64px)] lg:translate-x-[64px] w-[calc(100%-48px)] translate-x-[48px]">
-          <div id="home" className="el w-full h-lvh min-h-fit z-10 bg-white" style={{overflowY:"scroll"}}>{currentEL(0)}</div>
-          <div id="academic" className="el w-full h-lvh min-h-fit z-10 bg-white" style={{overflowY:"scroll"}}>{currentEL(1)}</div>
-          <div id="blog" className="el w-full h-lvh min-h-fit z-10 bg-white" style={{overflowY:"scroll"}}>{currentEL(2)}</div>
-          <div id="contact" className="el w-full h-lvh min-h-fit z-10 bg-white" style={{overflowY:"scroll"}}>{currentEL(3)}</div>
+      <div ref={pageRef}  className="fixed lg:w-[calc(100%-64px)] lg:ml-[64px] w-[calc(100%-48px)] ml-[48px] bg-[#F9FBFD]">
+          <div id="home" className="el w-full h-lvh min-h-fit z-10 bg-inherit" style={{overflowY:"scroll"}}>{currentEL(0)}</div>
+          <div id="academic" className="el w-full h-lvh min-h-fit z-10 bg-inherit" style={{overflowY:"scroll"}}>{currentEL(1)}</div>
+          <div id="blog" className="el w-full h-lvh min-h-fit z-10 bg-inherit" style={{overflowY:"scroll"}}>{currentEL(2)}</div>
+          <div id="contact" className="el w-full h-lvh min-h-fit z-10 bg-inherit" style={{overflowY:"scroll"}}>{currentEL(3)}</div>
       </div>
     </div>
   );

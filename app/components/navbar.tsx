@@ -15,7 +15,7 @@ function Navbar({setPageNum = (x)=> {}}: dataFormProps) {
                     <path d="M11.25 21.875C11.25 24.2912 9.29125 26.25 6.875 26.25C4.45875 26.25 2.5 24.2912 2.5 21.875C2.5 19.4588 4.45875 17.5 6.875 17.5C9.29125 17.5 11.25 19.4588 11.25 21.875Z" stroke="white" strokeWidth="1.5"></path>
                 </svg>
             </div>
-        <div  style={{writingMode:'vertical-lr', textOrientation:'revert', fontWeight:400 ,letterSpacing:"0.15rem"}} className='flex flex-row-reverse items-center w-full h-full gap-10 rotate-180 text-sm text-white'>
+        <div  style={{writingMode:'vertical-lr', textOrientation:'revert', fontWeight:400 ,letterSpacing:"0.15rem", }} className='flex flex-row-reverse items-center w-full h-full gap-10 rotate-180 text-sm text-white select-none'>
             <span  onClick={()=>setPageNum(0)} className=" cursor-pointer hover:text-[#3d9382] transition-colors">HOME</span>
             <span  onClick={()=>setPageNum(1)} className=" cursor-pointer hover:text-[#3d9382] transition-colors">ACADEMIC</span>
             <span  onClick={()=>setPageNum(2)} className=" cursor-pointer hover:text-[#3d9382] transition-colors">BLOG&nbsp;&&nbsp;NEWS</span>
