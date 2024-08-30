@@ -10,3 +10,13 @@ html {
     width: 100vw;
     overflow-x: hidden;
 }
+
+.center {
+    background: linear-gradient(to right, #063D32 50%, rgba(255, 0, 0, 0) 50%);
+}
+
+@media (max-width: 1024px) {
+    .center {
+      background: transparent;
+    }
+  }
