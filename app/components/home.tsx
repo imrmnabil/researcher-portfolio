@@ -4,6 +4,7 @@ import HomeBG from "./home-bg";
 import { ArrowDownIcon } from "@heroicons/react/24/solid";
 import workspaceImg from "@/public/res/image/workspace.jpg"
 import CarieerSec from "./carieer";
+import ExperienceSec from "./experience";
 
 function HomePage() {
   return (
@@ -24,6 +25,7 @@ function HomePage() {
           </div>
           <div className="w-full">
             <CarieerSec/>
+            <ExperienceSec/>
           </div>
         </div>
       </div>
