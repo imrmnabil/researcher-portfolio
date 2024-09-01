@@ -2,9 +2,10 @@ import Image from "next/image";
 import Hero from "./hero";
 import HomeBG from "./home-bg";
 import { ArrowDownIcon } from "@heroicons/react/24/solid";
-import workspaceImg from "@/public/res/image/workspace.jpg"
+import workspaceImg from "@/public/res/image/workspace.jpg";
 import CarieerSec from "./carieer";
 import ExperienceSec from "./experience";
+import LatestProjectsSec from "./latest-projects";
 
 function HomePage() {
   return (
@@ -24,9 +25,16 @@ function HomePage() {
             </div>
           </div>
           <div className="w-full">
-            <CarieerSec/>
-            <ExperienceSec/>
+            <CarieerSec />
           </div>
+        </div>
+        <div className="container flex flex-col justify-center items-center w-full">
+          <div className="w-full">
+            <ExperienceSec />
+          </div>
+        </div>
+        <div className="w-full">
+          <LatestProjectsSec />
         </div>
       </div>
     </div>

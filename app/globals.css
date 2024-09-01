@@ -2,21 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-.container{
-    max-width: 1140px;
+.container {
+  max-width: 1140px;
 }
 
 html {
-    width: 100vw;
-    overflow-x: hidden;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 .center {
-    background: linear-gradient(to right, #063D32 50%, rgba(255, 0, 0, 0) 50%);
+  background: linear-gradient(to right, #063d32 50%, rgba(255, 0, 0, 0) 50%);
 }
 
 @media (max-width: 1024px) {
-    .center {
-      background: transparent;
-    }
+  .center {
+    background: transparent;
   }
+}
+
+.bg-project-card {
+    background: rgb(33,42,77);
+    background: linear-gradient(167deg, rgba(33,42,77,0.8883928571428571) 0%, rgba(255,255,255,0) 100%);
+}
+
+.bg-project-card-next {
+  background: rgb(13,87,72);
+background: linear-gradient(167deg, rgba(13,87,72,1) 0%, rgba(255,255,255,0) 100%);
+}

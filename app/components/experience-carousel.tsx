@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, SetStateAction } from "react";
 import { academicRecords } from "../constants/homeData";
 import ExperienceCard from "./experience-card";
 import Slider from "react-slick";
@@ -38,14 +38,16 @@ function CustomNext(props: any) {
 }
 
 function ExperienceCarousel() {
-  const [nav1, setNav1] = useState<React.MutableRefObject<null> | null>(null);
-  const [nav2, setNav2] = useState<React.MutableRefObject<null> | null>(null);
+  const [nav1, setNav1] = useState<Slider>();
+  const [nav2, setNav2] = useState<Slider>();
   let sliderRef1 = useRef(null);
   let sliderRef2 = useRef(null);
 
   useEffect(() => {
-    setNav1(sliderRef1);
-    setNav2(sliderRef2);
+    if(sliderRef1.current && sliderRef2.current){
+    setNav1(sliderRef1.current);
+    setNav2(sliderRef2.current);
+    }
   }, []);
   const settings = {
     className: "center",
@@ -91,7 +93,7 @@ function ExperienceCarousel() {
                   <Slider
                     {...settings}
                     asNavFor={nav1}
-                    ref={(slider) => (sliderRef2 = slider)}
+                    ref={sliderRef2}
                   >
                     {academicRecords.map((item, i) => (
                       <ExperienceCard academicRecord={item} key={i} />
@@ -110,7 +112,7 @@ function ExperienceCarousel() {
           useTransform={true}
           arrows={false}
           adaptiveHeight={true}
-          ref={(slider) => (sliderRef1 = slider)}
+          ref={sliderRef1}
         >
             {academicRecords.map((item,i)=>(
                 <div className=" leading-loose font-light text-[16px] lg:text-[17px] " key={i}>

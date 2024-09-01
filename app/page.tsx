@@ -37,9 +37,6 @@ export default function Home() {
     divHeight = pageRef.current?.clientHeight/4;
   }
   
-  useEffect(()=>{
-    console.log(pageNum*divHeight);
-  },[pageNum])
   useGSAP(()=>{
     if(pageNum !== null){
       const y = divHeight*-pageNum;

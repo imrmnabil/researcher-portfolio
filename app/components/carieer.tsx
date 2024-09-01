@@ -183,7 +183,7 @@ function CarieerSec() {
                 <p>
                   My extensive experience in the field is a testament to my
                   expertise and dedication, consistently delivering outstanding
-                  results in the digital landscape. I'm a seasoned professional
+                  results in the digital landscape. I&apos;m a seasoned professional
                   who excels in the world of development.
                 </p>
               </div>
