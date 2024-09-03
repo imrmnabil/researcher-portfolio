@@ -1,6 +1,7 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
-import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
+import { MouseEvent } from 'react';
+import { useState, useRef, useEffect, forwardRef, useImperativeHandle  } from "react";
+import { ArrowLeftIcon, ArrowLeftStartOnRectangleIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 import React from "react";
 import LatestProjectCard from "./latest-project-card";
 import { latestProjects } from "../constants/homeData";
@@ -8,12 +9,27 @@ import LatestProjectNextCard from "./latest-project-next-card";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useGSAP } from "@gsap/react";
+import gsap from 'gsap';
+import useMouse from '@react-hook/mouse-position'
+import AnimatedCursor from 'react-animated-cursor';
 
-function LatestProjectsCarousel() {
+export interface LatestProjectsCarouselHandles {
+  next: () => void;
+  previous: () => void;
+}
+
+
+const LatestProjectsCarousel = forwardRef<LatestProjectsCarouselHandles>((props, ref) => {
   const [nav1, setNav1] = useState<Slider>();
   const [nav2, setNav2] = useState<Slider>();
   let sliderRef1 = useRef<Slider>(null);
   let sliderRef2 = useRef<Slider>(null);
+  let parentRef = useRef<HTMLDivElement>(null);
+  const mouse = useMouse(parentRef, {
+    enterDelay: 100,
+    leaveDelay: 100,
+  })
 
   const next = () => {
     if (sliderRef1.current) {
@@ -33,10 +49,43 @@ function LatestProjectsCarousel() {
       setNav2(sliderRef2.current);
     }
   }, []);
+
+  useGSAP(()=>{
+    if(mouse.x && mouse.y){
+    gsap.to("#cursor", {x:mouse.x,y: mouse.y, opacity:1,duration:0.2});}
+    else {
+      gsap.to("#cursor", { opacity:0})
+    }
+  },[mouse])
+
+  useGSAP(()=>{
+    gsap.to(".pulse-ring", {
+      scale: 1.75,
+      opacity: 0,
+      duration: 2,
+      stagger: {
+        each: 0.5,
+        repeat: -1
+      }
+    });
+  },[]);
+
+  useImperativeHandle(ref, () => ({
+    next,
+    previous,
+  }));
   return (
     <div>
       <div className="pr-0 lg:pr-20 w-full">
-        <div className="slider-container h-full relative z-20">
+        <div className="slider-container h-full relative z-20 cursor-none overflow-hidden" ref={parentRef}>
+        <div className='bg-[#087A67] absolute -top-8 -left-8 z-50 w-16 h-16 rounded-full flex items-center justify-center' id='cursor' style={{pointerEvents:"none"}}>
+          <div className='text-white z-20 animate-pulse'>
+            <ArrowLeftStartOnRectangleIcon width={30} height={30}/>
+          </div>
+          <div className="pulse-ring absolute w-full h-full rounded-full bg-inherit opacity-80"></div>
+          <div className="pulse-ring absolute w-full h-full rounded-full bg-inherit opacity-80"></div>
+          <div className="pulse-ring absolute w-full h-full rounded-full bg-inherit opacity-80"></div>
+        </div>
           <Slider asNavFor={nav2} ref={sliderRef1} arrows={false}>
             {latestProjects.map((item) => (
               <LatestProjectCard project={item} key={item.name} />
@@ -67,6 +116,8 @@ function LatestProjectsCarousel() {
       </div>
     </div>
   );
-}
+});
+
+LatestProjectsCarousel.displayName = "LatestProjectsCarousel";
 
 export default LatestProjectsCarousel;

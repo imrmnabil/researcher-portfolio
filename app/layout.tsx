@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
+import AnimatedCursor from "react-animated-cursor";
+import { Cursor } from "react-creative-cursor";
+import { cn } from "@udecode/cn";
 
 const inter = Inter({ subsets: ["latin"] });
 const outfit = Outfit({subsets:['latin']});

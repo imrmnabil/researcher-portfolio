@@ -1,7 +1,26 @@
-import React from "react";
-import LatestProjectsCarousel from "./latest-projects-carousel";
+'use client'
+import React, { useState,useRef } from "react";
+import LatestProjectsCarousel from './latest-projects-carousel';
+import {LatestProjectsCarouselHandles} from "./latest-projects-carousel"
+import { useGSAP } from "@gsap/react";
+
+
 
 function LatestProjectsSec() {
+  const carouselRef = useRef<LatestProjectsCarouselHandles>(null);
+
+  const handleNext = () => {
+    if (carouselRef.current) {
+      carouselRef.current.next();
+    }
+  };
+
+  const handlePrev = () => {
+    if (carouselRef.current) {
+      carouselRef.current.previous();
+    }
+  };
+
   return (
     <div className="my-12 lg:my-20 px-[32px] md:px-[50px] lg:px-[64px] w-full flex justify-center items-center">
       <div className="relative w-full max-w-[1140px]">
@@ -26,11 +45,34 @@ function LatestProjectsSec() {
               </div>
             </div>
             <div className="text-[20px] lg:text-2xl font-light mb-[50px] lg:mb-6 text-[#212A4D]">
-            These are my latest projects, where I&apos;ve applied my expertise to deliver cutting-edge digital solutions.</div>
+              These are my latest projects, where I&apos;ve applied my expertise
+              to deliver cutting-edge digital solutions.
+            </div>
           </div>
-          <div className="w-full lg:w-2/3"> 
-            <LatestProjectsCarousel/>
-            <div className="hidden lg:block bg-pulse-color-darker3 h-80 ml-0 lg:ml-20 -mt-60 relative bg-[#085748]"></div>
+          <div className="w-full lg:w-2/3">
+            <LatestProjectsCarousel ref={carouselRef}/>
+            <div className="hidden lg:block bg-pulse-color-darker3 h-80 ml-0 lg:ml-20 -mt-60 relative bg-[#085748]">
+              <div className="h-20 bottom-0 absolute w-full">
+                <div className="float-left text-white h-20 w-10 flex items-center justify-center">
+                  1
+                </div>
+                <div className="h-20 flex items-center float-left">
+                  <div className="h-0.5 w-12 min-[1090px]:w-24 bg-[#0000002e] ">
+                    <div className="progress w-0 h-0.5 bg-white"></div>
+                  </div>
+                </div>
+                <div className="float-left text-white h-20 w-10 flex items-center justify-center">
+                  1
+                </div>
+                <button type="button" className="bg-white" onClick={handleNext}>Next</button>
+                <div className="text-xs mr-20 float-right total-slide-count text-white h-20 flex items-center">
+                  <span className=" animate-pulse h-2 w-2 mr-2 rounded-full bg-green-500"></span>
+                  <span className="tracking-[1px]">
+                    NOW PROUDLY WORKING WITH <strong> GOOGLE</strong>
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

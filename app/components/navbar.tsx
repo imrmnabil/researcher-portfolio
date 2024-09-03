@@ -16,10 +16,10 @@ function Navbar({setPageNum = (x)=> {}}: dataFormProps) {
                 </svg>
             </div>
         <div  style={{writingMode:'vertical-lr', textOrientation:'revert', fontWeight:400 ,letterSpacing:"0.15rem", }} className='flex flex-row-reverse items-center w-full h-full gap-10 rotate-180 text-sm text-white select-none'>
-            <span  onClick={()=>setPageNum(0)} className=" cursor-pointer hover:text-[#3d9382] transition-colors">HOME</span>
-            <span  onClick={()=>setPageNum(1)} className=" cursor-pointer hover:text-[#3d9382] transition-colors">ACADEMIC</span>
-            <span  onClick={()=>setPageNum(2)} className=" cursor-pointer hover:text-[#3d9382] transition-colors">BLOG&nbsp;&&nbsp;NEWS</span>
-            <span  onClick={()=>setPageNum(3)} className=" cursor-pointer hover:text-[#3d9382] transition-colors">CONTACT</span>
+            <button onClick={()=>setPageNum(0)} className=" cursor-pointer hover:-translate-x-1 transition-all w-full">HOME</button>
+            <button onClick={()=>setPageNum(1)} className=" cursor-pointer hover:-translate-x-1 transition-all w-full">ACADEMIC</button>
+            <button onClick={()=>setPageNum(2)} className=" cursor-pointer hover:-translate-x-1 transition-all w-full">BLOG&nbsp;&&nbsp;NEWS</button>
+            <button onClick={()=>setPageNum(3)} className=" cursor-pointer hover:-translate-x-1 transition-all w-full">CONTACT</button>
         </div>
         <div className='w-[1px] h-full bg-gradient-to-b from-white to-[#0D5748]'></div>
     </div>

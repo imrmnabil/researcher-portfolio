@@ -9,6 +9,7 @@ import { useGSAP } from '@gsap/react';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import AcademicPage from "./components/academic";
 import useStateModified from "./functions/useStateModified";
+import AnimatedCursor from "react-animated-cursor";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -50,7 +51,8 @@ export default function Home() {
     setPageNum(i);
   }
   return (
-    <div>
+    <div className=" select-none">
+      {/* <AnimatedCursor  outerSize={35} outerScale={2} innerScale={.7} outerAlpha={1} innerStyle={{backgroundColor:"#08ad8f"}} outerStyle={{ backgroundColor:"transparent" , borderWidth:"1px", borderColor:"#08ad8f"}}/> */}
       <div className="fixed w-fit h-fit">
         <Navbar setPageNum={handlePageNum}/>
       </div>
