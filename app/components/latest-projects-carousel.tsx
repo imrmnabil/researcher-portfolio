@@ -19,8 +19,13 @@ export interface LatestProjectsCarouselHandles {
   previous: () => void;
 }
 
+interface LatestProjectsCarouselProps {
+  setCurrentIndex: (x:Number) => void
+  pauseAnimation: ()=>void
+  playAnimation: ()=>void
+}
 
-const LatestProjectsCarousel = forwardRef<LatestProjectsCarouselHandles>((props, ref) => {
+const LatestProjectsCarousel = forwardRef<LatestProjectsCarouselHandles, LatestProjectsCarouselProps>(({ setCurrentIndex = () => {}, pauseAnimation = ()=> {}, playAnimation= ()=>{} }, ref) => {
   const [nav1, setNav1] = useState<Slider>();
   const [nav2, setNav2] = useState<Slider>();
   let sliderRef1 = useRef<Slider>(null);
@@ -42,6 +47,35 @@ const LatestProjectsCarousel = forwardRef<LatestProjectsCarouselHandles>((props,
       sliderRef1.current.slickPrev();
     }
   };
+
+  const pause = ()=> {
+    if (sliderRef1.current) {
+      sliderRef1.current.slickPause();
+    }
+  }
+
+  const play = ()=> {
+    if (sliderRef1.current) {
+      sliderRef1.current.slickPlay();
+      console.log(sliderRef1.current.innerSlider)
+    }
+  }
+
+  useEffect(()=>{
+    if(parentRef.current){
+     var currentRef = parentRef.current;
+      currentRef.addEventListener("mouseenter",pauseAnimation)
+      currentRef.addEventListener("mouseleave",playAnimation)
+    }
+    
+
+    return()=> {
+      if(currentRef){
+         currentRef.addEventListener("mouseenter",pauseAnimation)
+         currentRef.addEventListener("mouseleave",playAnimation)
+       }
+    }
+  })
 
   useEffect(() => {
     if (sliderRef1.current && sliderRef2.current) {
@@ -75,8 +109,7 @@ const LatestProjectsCarousel = forwardRef<LatestProjectsCarouselHandles>((props,
     previous,
   }));
   return (
-    <div>
-      <div className="pr-0 lg:pr-20 w-full">
+      <div className="">
         <div className="slider-container h-full relative z-20 cursor-none overflow-hidden" ref={parentRef}>
         <div className='bg-[#087A67] absolute -top-8 -left-8 z-50 w-16 h-16 rounded-full flex items-center justify-center' id='cursor' style={{pointerEvents:"none"}}>
           <div className='text-white z-20 animate-pulse'>
@@ -86,7 +119,7 @@ const LatestProjectsCarousel = forwardRef<LatestProjectsCarouselHandles>((props,
           <div className="pulse-ring absolute w-full h-full rounded-full bg-inherit opacity-80"></div>
           <div className="pulse-ring absolute w-full h-full rounded-full bg-inherit opacity-80"></div>
         </div>
-          <Slider asNavFor={nav2} ref={sliderRef1} arrows={false}>
+          <Slider beforeChange={(prev,next)=> {setCurrentIndex(next)}} asNavFor={nav2} ref={sliderRef1} arrows={false}>
             {latestProjects.map((item) => (
               <LatestProjectCard project={item} key={item.name} />
             ))}
@@ -114,7 +147,6 @@ const LatestProjectsCarousel = forwardRef<LatestProjectsCarouselHandles>((props,
           </div>
         </div>
       </div>
-    </div>
   );
 });
 
