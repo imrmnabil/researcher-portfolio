@@ -126,7 +126,7 @@ const LatestProjectsCarousel = forwardRef<LatestProjectsCarouselHandles, LatestP
           </Slider>
         </div>
 
-        <div className="float-right -mt-16 lg:-mt-32  w-96 h-16 lg:h-32 bg-blue-400 z-30">
+        <div className="float-right -mt-16 lg:-mt-32  w-96 h-16 lg:h-32 z-30">
           <section className=" hidden lg:block w-80 h-32 float-left z-30 relative bg-gray-50">
             <div className="slider-container">
               <Slider asNavFor={nav1} ref={sliderRef2} arrows={false}>

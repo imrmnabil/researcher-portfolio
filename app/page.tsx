@@ -10,6 +10,7 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import AcademicPage from "./components/academic";
 import useStateModified from "./functions/useStateModified";
 import AnimatedCursor from "react-animated-cursor";
+import NavbarFloating from "./components/navbar-floating";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -41,8 +42,7 @@ export default function Home() {
   useGSAP(()=>{
     if(pageNum !== null){
       const y = divHeight*-pageNum;
-      gsap.to(pageRef.current,{y:y})
-      gsap.to(".el",{scrollTo: {y: 0}})
+      gsap.to(pageRef.current,{y:y, onComplete:()=>{gsap.to(".el",{scrollTo: {y: 0}})}})
     }
   },[pageNum])
 
@@ -52,11 +52,12 @@ export default function Home() {
   }
   return (
     <div className=" select-none">
+      <NavbarFloating/>
       {/* <AnimatedCursor  outerSize={35} outerScale={2} innerScale={.7} outerAlpha={1} innerStyle={{backgroundColor:"#08ad8f"}} outerStyle={{ backgroundColor:"transparent" , borderWidth:"1px", borderColor:"#08ad8f"}}/> */}
       <div className="fixed w-fit h-fit">
         <Navbar setPageNum={handlePageNum}/>
       </div>
-      <div ref={pageRef}  className="fixed lg:w-[calc(100%-64px)] lg:ml-[64px] w-[calc(100%-48px)] ml-[48px] bg-[#F9FBFD]">
+      <div ref={pageRef}  className="fixed md:w-[calc(100%-64px)] md:ml-[64px] w-[calc(100%-0px)] ml-[0px] bg-[#F9FBFD]">
           <div id="home" className="el w-full h-lvh min-h-fit z-10 bg-inherit" style={{overflowY:"scroll"}}>{currentEL(0)}</div>
           <div id="academic" className="el w-full h-lvh min-h-fit z-10 bg-inherit" style={{overflowY:"scroll"}}>{currentEL(1)}</div>
           <div id="blog" className="el w-full h-lvh min-h-fit z-10 bg-inherit" style={{overflowY:"scroll"}}>{currentEL(2)}</div>

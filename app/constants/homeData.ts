@@ -220,3 +220,60 @@ const latestProjects: ProjectData[] = [
 
 export {latestProjects}
 export type {ProjectDescription, ProjectData}
+
+
+//SkillsData 
+
+type Skill = {
+  id: number;
+  skill: string;
+  subskills: string[];
+  exp_percentage: number; // 0-100
+  exp_level: 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
+  experience: string; // e.g., '3 Years'
+  description: string;
+}
+
+
+const skills: Skill[] = [
+  {
+      id: 1,
+      skill: 'Web Development',
+      subskills: ['HTML', 'CSS', 'JavaScript', 'React', 'Next.js'],
+      exp_percentage: 85,
+      exp_level: 'Intermediate',
+      experience: '3 Years',
+      description: 'In web development, my skills shine through with proficiency in front-end technologies like HTML, CSS, and JavaScript. I also excel in frameworks like React and Next.js, enabling the creation of dynamic and responsive web applications.'
+  },
+  {
+      id: 2,
+      skill: 'Backend Development',
+      subskills: ['Node.js', 'Express', 'PHP', 'ASP.NET'],
+      exp_percentage: 75,
+      exp_level: 'Intermediate',
+      experience: '2 Years',
+      description: 'With backend development, I have hands-on experience in building scalable and efficient server-side applications using Node.js, Express, and other technologies like PHP and ASP.NET.'
+  },
+  {
+      id: 3,
+      skill: 'Database Management',
+      subskills: ['MySQL', 'MongoDB', 'PostgreSQL'],
+      exp_percentage: 80,
+      exp_level: 'Advanced',
+      experience: '4 Years',
+      description: 'I specialize in database management with strong expertise in relational and non-relational databases such as MySQL, MongoDB, and PostgreSQL, ensuring data integrity and optimized performance.'
+  },
+  {
+      id: 4,
+      skill: 'DevOps',
+      subskills: ['Docker', 'Kubernetes', 'CI/CD', 'AWS'],
+      exp_percentage: 65,
+      exp_level: 'Intermediate',
+      experience: '1.5 Years',
+      description: 'My DevOps skills include experience with containerization using Docker and Kubernetes, implementing CI/CD pipelines, and deploying applications on cloud platforms like AWS.'
+  }
+];
+
+
+export type {Skill}
+export {skills}

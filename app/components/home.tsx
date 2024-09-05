@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import Hero from "./hero";
 import HomeBG from "./home-bg";
@@ -6,23 +7,31 @@ import workspaceImg from "@/public/res/image/workspace.jpg";
 import CarieerSec from "./carieer";
 import ExperienceSec from "./experience";
 import LatestProjectsSec from "./latest-projects";
+import ExpertiseSec from "./expertise";
+import gsap from 'gsap';
+import ScrollToPlugin from 'gsap/ScrollToPlugin';
+gsap.registerPlugin(ScrollToPlugin)
+
 
 function HomePage() {
+  const handleClick = ()=> {
+    gsap.to("#home",{scrollTo:"#scrollBtn", duration:1})
+  }
   return (
-    <div className="relative w-full">
+    <div id="home" className="relative w-full">
       <div className=" absolute h-full w-full z-0">
         <HomeBG />
       </div>
       <div className="relative z-10 w-full flex flex-col justify-center items-center">
-        <div className="container lg:h-[calc(100vh-64px)] h-lvh">
+        <div className="container lg:h-[calc(100vh-64px)] h-svh ">
           <Hero />
         </div>
         <div className="container flex flex-col justify-center items-center w-full bg-white">
           <div className="w-full h-[64px] lg:flex hidden ">
             <div className="h-full w-full bg-white"></div>
-            <div className="h-full aspect-square bg-blue-950 flex justify-center items-center p-4 text-white">
+            <button id="scrollBtn" onClick={handleClick} className="h-full aspect-square bg-secondary flex justify-center items-center p-4 text-white">
               <ArrowDownIcon />
-            </div>
+            </button>
           </div>
           <div className="w-full">
             <CarieerSec />
@@ -35,6 +44,9 @@ function HomePage() {
         </div>
         <div className="w-full">
           <LatestProjectsSec />
+        </div>
+        <div className="w-full bg-primary">
+          <ExpertiseSec/>
         </div>
       </div>
     </div>
