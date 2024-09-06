@@ -23,7 +23,7 @@ function ExpertiseCard({ skill }: Props) {
   }, [skill]);
   return (
     <div className="w-full lg:h-[380px] xl:h-[320px]">
-      <div className="flex bg-primary-darker1 p-3 lg:flex-nowrap flex-wrap gap-2">
+      <div className="flex bg-primary-darker1 p-3 md:flex-nowrap flex-wrap gap-2">
         <div className="flex w-full md:w-fit items-center gap-2">
           <div className="w-14 aspect-square flex justify-center items-center text-[19px] font-normal text-white bg-primary-darker3">
             {`${skill.exp_percentage}%`}

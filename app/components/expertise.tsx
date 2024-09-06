@@ -31,10 +31,10 @@ function ExpertiseSec() {
             </div>
           </div>
           <div className="w-full lg:w-2/3">
-            <div className='hidden md:block w-full'>
+            <div className='hidden lg:block w-full'>
               <ExpertiseTabs/>
             </div>
-            <div className='md:hidden block w-full'>
+            <div className='lg:hidden block w-full'>
               <ExpertiseExpandable/>
             </div>
           </div>

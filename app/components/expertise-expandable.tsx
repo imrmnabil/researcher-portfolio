@@ -46,12 +46,11 @@ function ExpertiseExpandable() {
       <div className=" flex flex-col gap-2 relative mb-1">
         {skills.map((item, i) => {
           return (
-            <div key={i} className=" bg-primary-darker2">
+            <div key={i} className=" bg-primary-darker2 cursor-pointer" onClick={() => {
+              handleClick(i);
+            }}>
               <div className="flex bg-primary-darker3 p-4 cursor-pointer items-center">
                 <button
-                  onClick={() => {
-                    handleClick(i);
-                  }}
                 >
                   <ChevronRightIcon
                     id={`button-${i}`}

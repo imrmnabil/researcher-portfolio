@@ -36,9 +36,9 @@ function ExpertiseTabs() {
         {skills.map((item,i)=>(
             <li className="w-auto float-left contents" key={i} >
             <button id={`option-${i}`} onClick={()=>{handleClick(i)}}
-              className=" w-full text-left text-[13px] block font-normal bg-primary-darker3 text-white pl-6 py-5 border-b border-primary-darker1 hover:bg-primary-darker1"
+              className=" w-full text-left text-[13px] block font-normal bg-primary-darker3 text-white pl-6 py-5 border-b border-primary-darker1 focus:bg-primary-darker1 hover:bg-primary-darker1"
             >
-              <span className=" uppercase whitespace-nowrap text-ellipsis">{item.skill}</span>
+              <span className=" uppercase text-ellipsis pr-4">{item.skill}</span>
             </button>
           </li>
         ))}
@@ -46,6 +46,7 @@ function ExpertiseTabs() {
         
       </ul>
       <div className="w-full ">
+      <div className=" hidden bg-primary-darker1"></div>
         <div id="wrapper" className="w-full h-full bg-primary-darker2 p-8">
           {getCurrentTab(activeTab)}
           </div>
