@@ -3,8 +3,11 @@ import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import LatestProjectsCarousel from "./latest-projects-carousel";
 import { LatestProjectsCarouselHandles } from "./latest-projects-carousel";
 
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
+import { latestProjects } from "../constants/homeData";
+import SampleModal from "./sample-modal";
 
 gsap.registerPlugin(useGSAP);
 
@@ -13,7 +16,7 @@ function LatestProjectsSec() {
   const progressRef = useRef<HTMLDivElement>(null);
   const pauseAreaRef = useRef<HTMLDivElement>(null);
   const [currInd, setCurrInd] = useState<Number>(0);
-  const tl = useRef<GSAPTimeline>(gsap.timeline({repeat:-1}));
+  const tl = useRef<GSAPTimeline>(gsap.timeline({ repeat: -1 }));
 
   const handleNext = () => {
     if (carouselRef.current) {
@@ -36,18 +39,23 @@ function LatestProjectsSec() {
     console.log("Animation completed!");
   };
 
-  useGSAP(()=>{
-    tl.current.to(progressRef.current,{width:"100%", duration:3,ease:"none", onComplete:handleNext})
-    console.log("initialize")
-  },[tl.current])
+  useGSAP(() => {
+    tl.current.to(progressRef.current, {
+      width: "100%",
+      duration: 3,
+      ease: "none",
+      onComplete: handleNext,
+    });
+    console.log("initialize");
+  }, [tl.current]);
 
-  const pauseAnimation = ()=> {
-    tl.current.pause()
-  }
+  const pauseAnimation = () => {
+    tl.current.pause();
+  };
 
-  const playAnimation = ()=> {
-    tl.current.play()
-  }
+  const playAnimation = () => {
+    tl.current.play();
+  };
 
   return (
     <div className="my-12 lg:my-20 px-[32px] md:px-[50px] lg:px-[64px] w-full flex justify-center items-center">
@@ -79,12 +87,15 @@ function LatestProjectsSec() {
           </div>
           <div className="w-full lg:w-2/3">
             <div className="pr-0 lg:pr-20 w-full">
-              <div ref={pauseAreaRef}>
+              <div ref={pauseAreaRef} className=" block relative overflow-hidden">
+                <div className="absolute inset-0 z-10 opacity-0">
+                </div>
                 <LatestProjectsCarousel
                   ref={carouselRef}
+                  currInd = {currInd.valueOf()}
                   setCurrentIndex={setCurrentIndex}
-                  pauseAnimation = {pauseAnimation}
-                  playAnimation = {playAnimation}
+                  pauseAnimation={pauseAnimation}
+                  playAnimation={playAnimation}
                 />
               </div>
             </div>

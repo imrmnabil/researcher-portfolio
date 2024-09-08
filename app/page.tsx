@@ -3,7 +3,7 @@ import Image from "next/image";
 import HomePage from "./components/home";
 import Navbar from "./components/navbar";
 
-import { MutableRefObject, useRef, useState, useEffect } from "react";
+import { MutableRefObject, useRef, useState, useEffect, ReactNode } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -44,7 +44,7 @@ export default function Home() {
       (item: number) => {
         return new Promise<void>((resolve) => {
           gsap.to(`#page-${item}`, {
-            y: 0,
+            yPercent: 0,
             onComplete: () => {
               gsap.to(`#content-${currentPage}`, {
                 scrollTo: { y: 0 },
@@ -68,7 +68,7 @@ export default function Home() {
       (item: number) => {
         return new Promise<void>((resolve) => {
           gsap.to(`#page-${item}`, {
-            y: -1000,
+            yPercent: -100,
             onComplete: () => {
               gsap.to(`#content-${currentPage}`, {
                 scrollTo: { y: 0 },
@@ -98,7 +98,7 @@ export default function Home() {
   };
   return (
     <div className=" select-none flex overflow-hidden fixed w-full  h-full top-0 left-0">
-      <NavbarFloating />
+      <NavbarFloating setPageNum={handlePageNum} pageNum={currentPage}/>
       {/* <AnimatedCursor  outerSize={35} outerScale={2} innerScale={.7} outerAlpha={1} innerStyle={{backgroundColor:"#08ad8f"}} outerStyle={{ backgroundColor:"transparent" , borderWidth:"1px", borderColor:"#08ad8f"}}/> */}
       <div className="overflow-y-scroll overflow-x-hidden w-fit h-fit bg-[#0D5748] no-scrollbar flex-shrink-0">
         <Navbar setPageNum={handlePageNum} />

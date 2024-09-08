@@ -44,6 +44,10 @@ html {
 background: linear-gradient(167deg, rgba(13,87,72,1) 0%, rgba(255,255,255,0) 100%);
 }
 
+#modal-cover {
+  background: rgb(0, 0, 0);
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.4) 10%, rgba(0, 0, 0, 0) 100%);
+}
 
 
 .pulsating-circle {
@@ -102,4 +106,8 @@ background: linear-gradient(167deg, rgba(13,87,72,1) 0%, rgba(255,255,255,0) 100
   100% {
     transform: scale(.8);
   }
+}
+
+.slide-pane__content {
+  padding: 0%;
 }

@@ -10,15 +10,19 @@ import LatestProjectsSec from "./latest-projects";
 import ExpertiseSec from "./expertise";
 import gsap from 'gsap';
 import ScrollToPlugin from 'gsap/ScrollToPlugin';
+import { useRef } from "react";
+import ProjectPane from "./project-pane";
 gsap.registerPlugin(ScrollToPlugin)
 
 
 function HomePage() {
+
+  const parentDivRef = useRef(null)
   const handleClick = ()=> {
-    gsap.to("#home",{scrollTo:"#scrollBtn", duration:1})
+    gsap.to(document.getElementById('content-0'),{scrollTo:"#scrollBtn", duration:1 ,onComplete:()=>{console.log("clicked")}})
   }
   return (
-    <div id="home" className="relative w-full">
+    <div id="home" ref={parentDivRef} className="relative w-full" >
       <div className=" absolute h-full w-full z-0">
         <HomeBG />
       </div>

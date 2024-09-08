@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
 import { ProjectData } from "../constants/homeData";
 import Image from "next/image";
+import ProjectPane from './project-pane';
+import SampleModal from "./sample-modal";
 
 interface ProjectProps {
   project: ProjectData;
