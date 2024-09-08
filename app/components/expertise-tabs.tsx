@@ -7,11 +7,11 @@ import gsap from 'gsap';
 
 function ExpertiseTabs() {
   const [activeTab, setActiveTab] = useState(0)
+  const activeTabClass = "w-full text-left text-[13px] block font-normal bg-primary-darker1 text-white pl-6 py-5 border-b border-primary-darker1  hover:bg-primary-darker1"
+  const inactiveTabClass = "w-full text-left text-[13px] block font-normal bg-primary-darker3 text-white pl-6 py-5 border-b border-primary-darker1  hover:bg-primary-darker1"
 
   const handleClick = (x:number) => {
     if(x !== activeTab) {
-      document.getElementById(`option-${activeTab}`)?.classList.remove('bg-primary-darker1')
-    
     gsap.to("#wrapper",{opacity:0,duration:0.1, onComplete: ()=>{setActiveTab(x)}})
     }
   }
@@ -23,7 +23,6 @@ function ExpertiseTabs() {
   }
 
   useGSAP(()=>{
-    document.getElementById(`option-${activeTab}`)?.classList.add('bg-primary-darker1')
     gsap.to("#wrapper",{opacity:1})
   },[activeTab])
 
@@ -36,7 +35,7 @@ function ExpertiseTabs() {
         {skills.map((item,i)=>(
             <li className="w-auto float-left contents" key={i} >
             <button id={`option-${i}`} onClick={()=>{handleClick(i)}}
-              className=" w-full text-left text-[13px] block font-normal bg-primary-darker3 text-white pl-6 py-5 border-b border-primary-darker1 focus:bg-primary-darker1 hover:bg-primary-darker1"
+              className={(i === activeTab)?activeTabClass:inactiveTabClass}
             >
               <span className=" uppercase text-ellipsis pr-4">{item.skill}</span>
             </button>
