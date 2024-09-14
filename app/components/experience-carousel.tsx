@@ -7,6 +7,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
+import WhiteTitleBar from "./atomic/titlebar-white";
 
 function CustomPrev(props: any) {
   const { className, style, onClick } = props;
@@ -71,19 +72,8 @@ function ExperienceCarousel() {
   return (
     <div className="slider-container">
       <div className="bg-[#087A67] p-[50px] !pl-[30px] md:!pl-[50px] lg:!pl-[64px] lg:p-20 relative min-h-[316px] md:min-h-[335px] lg:min-h-[456px]">
-        <div className="flex flex-col text-[36px] lg:text-[48px] !leading-tight w-full lg:mb-0 pr-0  pt-0 md:pt-[12px] mb-[50px] md:mb-14 ">
-          <div className="font-thin flex w-full gap-4 mb-4 h-[36px] items-center">
-            <div className="flex-shrink-0 text-white">EXPERIENCE </div>
-            <div className=" invisible md:visible h-full flex-grow bg-white">
-              &nbsp;
-            </div>
-          </div>
-          <div className="font-bold flex w-full gap-4 mb-4 h-[36px] items-center">
-            <div className="text-white">&amp;&nbsp;STUDIES</div>{" "}
-            <div className="invisible md:visible  h-full flex-grow bg-white">
-              &nbsp;
-            </div>
-          </div>
+        <div className="flex flex-col items-center justify-center"> 
+        <WhiteTitleBar top="EXPERIENCE" bottom="& STUDIES"/>
         </div>
         <div>
           <div>

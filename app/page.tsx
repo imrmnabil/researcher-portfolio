@@ -103,11 +103,11 @@ export default function Home() {
       <div className="overflow-y-scroll overflow-x-hidden w-fit h-fit bg-[#0D5748] no-scrollbar flex-shrink-0">
         <Navbar setPageNum={handlePageNum} />
       </div>
-      <div className="min-w-0 bg-[#F9FBFD] h-full flex-shrink flex-grow slider-container overflow-hidden relative">
+      <div className="min-w-0 bg-primary-brighter1 h-full flex-shrink flex-grow slider-container overflow-hidden relative">
         {[0, 1, 2].map((item) => (
           <div
             id={`page-${item}`}
-            className=" absolute top-0 left-0 w-full h-full bg-white"
+            className=" absolute top-0 left-0 w-full h-full bg-primary-brighter1"
             key={item}
             style={{ zIndex: 5 - item }}
           >
