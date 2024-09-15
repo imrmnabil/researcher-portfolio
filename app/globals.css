@@ -13,6 +13,13 @@
       -ms-overflow-style: none;  /* IE and Edge */
       scrollbar-width: none;  /* Firefox */
 }
+
+.slick-list 
+{
+    -webkit-transition: height 250ms linear !important;
+    transition: height 250ms linear !important;
+}
+
 }
 
 .container {

@@ -4,6 +4,10 @@ import ExpertiseTabs from "./expertise-tabs";
 import PublicationTabs from "./publication-tabs";
 import PublicationExpandable from "./publication-expandable";
 import ResearchContainer from "./research-container";
+import ResearchTeamCard from "./research-team-card";
+import P1 from '@/public/res/image/team/1.jpg'
+import P2 from '@/public/res/image/team/2.jpg'
+import P3 from '@/public/res/image/team/3.jpg'
 
 function AcademicPage() {
   return (
@@ -51,6 +55,19 @@ function AcademicPage() {
       </div>
       <div className="w-full bg-primary">
         <ResearchContainer/>
+      </div>
+      <div className=" px-[32px] md:px-[50px] lg:px-[64px] w-full flex flex-col justify-center items-center pb-20">
+        <div className="relative w-full max-w-[1140px]">
+          <div className="pb-10 lg:pb-20">
+          <GradientTitleBar top="LABORATORY" bottom="TEAM"/>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+            <ResearchTeamCard image={P1}/>
+            <ResearchTeamCard image={P2}/>
+            <ResearchTeamCard image={P3}/>
+          </div>
+        </div>
+        
       </div>
     </div>
   );

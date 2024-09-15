@@ -10,6 +10,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 import WhiteTitleBar from "./atomic/titlebar-white";
 import { articles } from "../constants/publicationData";
 import ResearchCarouselCard from "./research-carousel-card";
+import AnimateHeight from 'react-animate-height';
 
 
 
@@ -34,7 +35,7 @@ function ResearchCarousel() {
         carouselRef.current?.slickNext()
       }
       return (
-        <div className="slider-container h-auto bg-primary-darker3 transition-all">
+        <div className="slider-container h-auto bg-primary-darker3" style={{WebkitTransitionProperty:""}}>
           <Slider ref={carouselRef} {...settings}>
             {articles.map((item,index)=>(
                 <ResearchCarouselCard article={item} prev={prev} next={next} key={index}/>
